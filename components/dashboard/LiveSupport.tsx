@@ -1,13 +1,35 @@
-import React from "react";
-import Script from "next/script";
+"use client";
 
-const LiveSupport: React.FC = () => {
-  return (
-    <Script
-      src="//code.jivosite.com/widget/BUNsrHweAc"
-      strategy="beforeInteractive"
-    />
-  );
-};
+import { useEffect } from "react";
 
-export default LiveSupport;
+declare global {
+  interface Window {
+    smartsupp: any;
+    _smartsupp: any;
+  }
+}
+
+export default function LiveSupport() {
+  useEffect(() => {
+    window._smartsupp = window._smartsupp || {};
+    window._smartsupp.key = "a38d213cd564b01abc95113ea19843d71ad204d5";
+    window.smartsupp =
+      window.smartsupp ||
+      function () {
+        (window.smartsupp._ = window.smartsupp._ || []).push(arguments);
+      };
+    window.smartsupp._ = window.smartsupp._ || [];
+
+    const script = document.createElement("script");
+    script.type = "text/javascript";
+    script.async = true;
+    script.src = "https://www.smartsuppchat.com/loader.js?";
+    document.head.appendChild(script);
+
+    return () => {
+      document.head.removeChild(script);
+    };
+  }, []);
+
+  return null;
+}
