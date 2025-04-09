@@ -50,7 +50,7 @@ export default function Flight() {
             Pay for flights with your bank account
           </h2>
           <p className="max-w-[600px] text-neutral-400 font-medium md:text-base/relaxed lg:text-base/relaxed xl:text-base/relaxed ">
-            Secure your flight reservations directly via the Capital Nexus
+            Secure your flight reservations directly via the Swift Nexus
             platform and conveniently settle payments using your bank account.
             This streamlined process eliminates the need for credit cards or
             external payment services, ensuring a smoother transaction

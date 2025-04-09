@@ -23,7 +23,7 @@ export default function Headerstuffs() {
           <br /> us
         </div>
         <div className="text-wrap font-medium md:text-base /text-center md:px-5 text-sm text-neutral-500">
-          Capital Nexus Priotized security and other <br /> essential factor to
+          Swift Nexus Priotized security and other <br /> essential factor to
           give users the feel of safety and trust <br /> with our ever-active
           support system to tend to all your needs.
         </div>{" "}

@@ -156,7 +156,7 @@ export default function ReasonPage() {
           <br className="hidden md:block" /> us
         </div>
         <div className="text-wrap font-medium md:text-base /text-center md:px-5 text-sm text-neutral-500">
-          Capital Nexus Priotized security and other{" "}
+          Swift Nexus Priotized security and other{" "}
           <br className="lg:block hidden" /> essential factor to give users the
           feel of safety and trust <br className="lg:block hidden" /> with our
           ever-active support system to tend to all your needs.

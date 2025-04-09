@@ -58,7 +58,7 @@ export default function Savings() {
         </div>
         <div className="small-text text-base md:text-lg mt-3 leading-6 font-medium text-neutral-500 text-balance">
           Experience unparalleled savings and investment opportunities at{" "}
-          <span className="font-semibold">Capital Nexus</span>, where your
+          <span className="font-semibold">Swift Nexus</span>, where your
           financial growth and security are our top priorities. Join us to take
           advantage of our expert financial guidance and comprehensive
           solutions.

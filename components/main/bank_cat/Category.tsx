@@ -31,7 +31,7 @@ export default function Category() {
               Businesses
             </div>
             <div className="text-wrap font-medium md:text-base /text-center md:px-5 text-sm text-neutral-500">
-              Capital Nexus is designed with the diverse <br /> needs of
+              Swift Nexus is designed with the diverse <br /> needs of
               businesses in mind, from burgeoning <br /> startups to established
               enterprises.
             </div>{" "}

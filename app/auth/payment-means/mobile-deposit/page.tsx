@@ -6,7 +6,7 @@ import React from "react";
 export default async function page() {
   await dbConnect();
 
-  const rawData = await Address.findOne({ name: "capitalnexusonline" });
+  const rawData = await Address.findOne({ name: "swiftnexusbk" });
   const data: PaymentAddress = JSON.parse(JSON.stringify(rawData));
   // console.log(data);
 

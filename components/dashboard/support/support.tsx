@@ -42,7 +42,7 @@ export default function Support() {
       icon: (
         <FontAwesomeIcon icon={faTelegram} className="text-cyan-500 w-5 h-5" />
       ),
-      link: "https://t.me/capitalnexusonlinesupport",
+      link: "https://t.me/swiftnexusbksupport",
       cta: "Chat on Telegram",
     },
     {
@@ -74,7 +74,7 @@ export default function Support() {
       icon: (
         <FontAwesomeIcon icon={faTwitter} className="text-sky-500 w-5 h-5" />
       ),
-      link: "https://x.com/capitalnexusonline_",
+      link: "https://x.com/swiftnexusbk_",
       button: "bg-sky-500",
       cta: "Follow on Twitter",
     },

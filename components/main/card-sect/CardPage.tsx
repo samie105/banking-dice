@@ -82,7 +82,7 @@ export default function CardPage() {
           </div>
           <div className="small-text text-base lg:text-lg mt-5 font-medium text-neutral-500 md:text-balance">
             Discover the best credit card options at{" "}
-            <span className="font-semibold">Capital Nexus</span>, tailored to
+            <span className="font-semibold">Swift Nexus</span>, tailored to
             maximize your purchasing power and financial flexibility. Benefit
             from our expert advice and exclusive rewards as you manage your
             spending efficiently.

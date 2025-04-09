@@ -61,7 +61,7 @@ const deets = {
   notifications: [
     {
       id: 1,
-      message: "Welcome to capital nexus",
+      message: "Welcome to Swift Nexus",
       status: "neutral",
       type: "neutral",
       dateAdded: new Date(),

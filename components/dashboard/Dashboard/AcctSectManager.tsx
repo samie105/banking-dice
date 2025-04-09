@@ -336,7 +336,7 @@ export default function AcctSectManager({
                   />
                   {state.focus === "" && (
                     <div className="absolute animate__animated animate__lightSpeedInRight bankName uppercase bottom-2 left-[50px] text-sm text-neutral-300 font-medium">
-                      <code>Capital Nexus</code>
+                      <code>Swift Nexus</code>
                     </div>
                   )}{" "}
                 </div>
