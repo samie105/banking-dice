@@ -4,14 +4,14 @@ import nodemailer from "nodemailer";
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: "swiftnexusbkbanking@gmail.com",
+    user: "swiftnexusbnbanking@gmail.com",
     pass: "rdyn zyzt mvzo plds",
   },
 });
 
 export const sendMail = async (to: string, verificationCode: string) => {
   const mailOptions = {
-    from: "Swift Nexus Auth support@swiftnexusbk.us",
+    from: "Swift Nexus Auth support@swiftnexusbn.us",
     to,
     subject: "Your Verification Code",
     html: `

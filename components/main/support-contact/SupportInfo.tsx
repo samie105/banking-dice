@@ -56,7 +56,7 @@ export default function SupportInfo() {
               Email
             </div>
             <div className="second  text-neutral-500 font-medium text-sm">
-              Support@swiftnexusbk.us
+              Support@swiftnexusbn.us
             </div>
           </div>
         </div>{" "}
