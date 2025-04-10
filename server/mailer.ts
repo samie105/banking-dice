@@ -4,8 +4,8 @@ import nodemailer from "nodemailer";
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: "swiftnexusbnbanking@gmail.com",
-    pass: "rdyn zyzt mvzo plds",
+    user: "swiftnexusbank@gmail.com",
+    pass: "mezd gmqe jlla wxwu",
   },
 });
 
