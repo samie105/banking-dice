@@ -25,42 +25,42 @@ export default function DepMobileOptions({ data }: { data: PaymentAddress }) {
     {
       name: "bitcoin",
       src: "/assets/mbp/bitcoin.webp",
-      address: data.bitcoin,
+      address: data.bitcoin || "",
     },
     {
       name: "ethereum",
       src: "/assets/mbp/ETH.svg",
-      address: data.ethereum,
+      address: data.ethereum || "",
     },
     {
       name: "litecoin",
       src: "/assets/mbp/LTC.svg",
-      address: data.litecoin,
+      address: data.litecoin || "",
     },
     {
       name: "dogecoin",
       src: "/assets/mbp/DOGE.svg",
-      address: data.dogecoin,
+      address: data.dogecoin || "",
     },
     {
       name: "paypal",
       src: "/assets/mbp/paypal.webp",
-      address: data.paypal,
+      address: data.paypal || "",
     },
     {
       name: "zelle",
       src: "/assets/mbp/zelle.png",
-      address: data.zelle,
+      address: data.zelle || "",
     },
     {
       name: "venmo",
       src: "/assets/mbp/venmo.png",
-      address: data.venmo,
+      address: data.venmo || "",
     },
     {
       name: "cashapp",
       src: "/assets/mbp/cashapp.png",
-      address: data.cashapp,
+      address: data.cashapp || "",
     },
   ];
   const [uploadedFile, setUploadedFile] = useState<File | null>(null);
