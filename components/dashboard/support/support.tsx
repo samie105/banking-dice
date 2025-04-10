@@ -30,7 +30,7 @@ export default function Support() {
       icon: (
         <FontAwesomeIcon icon={faWhatsapp} className="text-green-500 w-5 h-5" />
       ),
-      link: "https://wa.me/1234567890",
+      link: "#",
       button: "bg-green-500",
       cta: "Chat on WhatsApp",
     },
@@ -42,7 +42,7 @@ export default function Support() {
       icon: (
         <FontAwesomeIcon icon={faTelegram} className="text-cyan-500 w-5 h-5" />
       ),
-      link: "https://t.me/swiftnexusbnsupport",
+      link: "https://t.me/Swiftnexusbanksupport1",
       cta: "Chat on Telegram",
     },
     {
@@ -52,7 +52,7 @@ export default function Support() {
       icon: (
         <FontAwesomeIcon icon={faEnvelope} className="text-red-500 w-5 h-5" />
       ),
-      link: "mailto:wilsonGroup@usa.com",
+      link: "#",
       button: "bg-red-500",
       cta: "Send an email",
     },
@@ -63,7 +63,7 @@ export default function Support() {
       icon: (
         <FontAwesomeIcon icon={faFacebookF} className="text-blue-500 w-5 h-5" />
       ),
-      link: "https://www.facebook.com/profile.php?id=100092344946573&mibextid=ZbWKwL",
+      link: "#",
       button: "bg-blue-500",
       cta: "Visit Facebook Page",
     },
@@ -74,7 +74,7 @@ export default function Support() {
       icon: (
         <FontAwesomeIcon icon={faTwitter} className="text-sky-500 w-5 h-5" />
       ),
-      link: "https://x.com/swiftnexusbn_",
+      link: "#",
       button: "bg-sky-500",
       cta: "Follow on Twitter",
     },
@@ -85,7 +85,7 @@ export default function Support() {
       icon: (
         <FontAwesomeIcon icon={faPhone} className="text-yellow-500 w-5 h-5" />
       ),
-      link: "tel:+16787192288",
+      link: "#",
       button: "bg-yellow-500",
       cta: "Call us now",
     },
