@@ -235,19 +235,19 @@ export default function TransferHeaders() {
                   <Label htmlFor="recipientAccountNumber">
                     Recipient Account Number
                   </Label>
-                  <Input
+                    <Input
                     id="recipientAccountNumber"
                     type="text"
-                    placeholder="Enter 10-digit account number"
+                    placeholder="Enter account number"
                     className={`${inter.className} bg-neutral-50 border-neutral-500/10`}
                     {...register("recipientAccountNumber", {
                       required: "Account number is required",
                       pattern: {
-                        value: /^[0-9]{10}$/,
-                        message: "Account number must be exactly 10 digits",
+                      value: /^[0-9]{5,}$/,
+                      message: "Account number must be at least 5 digits",
                       },
                     })}
-                  />
+                    />
                   {errors.recipientAccountNumber && (
                     <p className="text-red-500 text-xs mt-1">
                       {errors.recipientAccountNumber.message}
