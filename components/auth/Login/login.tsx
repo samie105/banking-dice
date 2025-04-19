@@ -47,7 +47,7 @@ export default function Login() {
           id: toastId,
           duration: 3000,
         });
-        router.push("/dashboard");
+      data.role === "admin"?  router.push("/admin") : router.push("/dashboard");
       }
       if (!data?.success) {
         toast.error(data?.message, {

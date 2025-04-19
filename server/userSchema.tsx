@@ -31,7 +31,7 @@ export interface IUser extends Document {
   accountLimit: number;
   isPaidOpeningDeposit: boolean;
   fixedHistory: FixedType[];
-  role: string;
+  role: "admin" | "user";
   accountType: "savings" | "checking";
   depositHistory: Deposits[];
   transferHistory: Transfers[];

@@ -80,6 +80,7 @@ export const loginUser = actionClient
           return {
             success: true,
             message: "Logged in successfully, redirecting...",
+            role: user.role,
           };
         }
 
