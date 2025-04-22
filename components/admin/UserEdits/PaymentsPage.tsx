@@ -145,6 +145,7 @@ export default function PaymentsPage({ data }: { data: IUser }) {
               <TableHead>Payment Means</TableHead>
               <TableHead>Status</TableHead>
               <TableHead>Date</TableHead>
+              <TableHead>Description</TableHead>
               <TableHead>Action</TableHead>
             </TableRow>
           </TableHeader>
@@ -172,6 +173,7 @@ export default function PaymentsPage({ data }: { data: IUser }) {
                   <TableCell>
                     {new Date(deposit.date).toLocaleDateString()}
                   </TableCell>
+                  <TableCell>{deposit.description || '-'}</TableCell>
                   <TableCell>
                     <Popover>
                       <PopoverTrigger

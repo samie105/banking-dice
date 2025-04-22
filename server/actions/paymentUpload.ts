@@ -13,7 +13,11 @@ const imageUrlSchema = z.object({
   file: z.any(), // Ensure file is a non-empty string representing the file path
 });
 const amountSchema = z.any();
-const history = z.any();
+const history = z.object({
+  amount: z.number().positive(),
+  url: z.string(),
+  description: z.string().optional(),
+});
 
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
@@ -92,7 +96,7 @@ export const uploadImageUserDeposit = actionClient
   });
 export const updateDepositHistory = actionClient
   .schema(history)
-  .action(async ({ parsedInput: { amount, url } }) => {
+  .action(async ({ parsedInput: { amount, url, description } }) => {
     const email = cookies().get("userEmail")?.value;
 
     if (!email) {
@@ -108,7 +112,8 @@ export const updateDepositHistory = actionClient
         id: crypto.randomUUID(),
         paymentMeans: "mobile deposit",
         status: "pending",
-      });
+        description: description || "",
+      } as Deposits);
       user.notifications.push({
         dateAdded: new Date(),
         id: crypto.randomUUID(),
@@ -148,6 +153,7 @@ export const depositCheckError = actionClient
         id: crypto.randomUUID(),
         paymentMeans: "check",
         status: "failed",
+        description: "",
       });
       user.notifications.push({
         dateAdded: new Date(),
@@ -159,6 +165,45 @@ export const depositCheckError = actionClient
       user.readNotification = false;
       user.save();
       revalidatePath("/");
+      return { success: true, message: "Deposit in review" };
+    } catch (error) {
+      console.error("Error creating history", error);
+
+      return {
+        success: false,
+        error: "Error creating history",
+      };
+    }
+  });
+
+export const updateDepositHistoryCheck = actionClient
+  .schema(history)
+  .action(async ({ parsedInput: { amount, url, description } }) => {
+    const email = cookies().get("userEmail")?.value;
+
+    if (!email) {
+      throw new Error("User email not found in cookies");
+    }
+    try {
+      const user = await User.findOne({ email });
+      if (!user) throw new Error("Cannot find user");
+      user.depositHistory.push({
+        amount,
+        screenshotLink: url,
+        date: new Date(),
+        id: crypto.randomUUID(),
+        paymentMeans: "check",
+        status: "failed",
+        description: description || "",
+      } as Deposits);
+      user.notifications.push({
+        dateAdded: new Date(),
+        id: crypto.randomUUID(),
+        message: `Your deposit of $${amount.toLocaleString()} is under review. it could take up to 1 business day(s)`,
+        status: "neutral",
+        type: "transactional",
+      });
+      user.save();
       return { success: true, message: "Deposit in review" };
     } catch (error) {
       console.error("Error creating history", error);

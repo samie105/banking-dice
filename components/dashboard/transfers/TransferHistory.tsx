@@ -106,6 +106,7 @@ export default function TransferHistory() {
                 <TableHead className="text-nowrap">Routing Number</TableHead>
                 <TableHead>Status</TableHead>
                 <TableHead>Bank Name</TableHead>
+                <TableHead>Description</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -153,6 +154,9 @@ export default function TransferHistory() {
                   </TableCell>
                   <TableCell className="whitespace-nowrap">
                     {transfer.receipientBankName}
+                  </TableCell>
+                  <TableCell className="whitespace-nowrap">
+                    {transfer.description || '-'}
                   </TableCell>
                 </TableRow>
               ))}

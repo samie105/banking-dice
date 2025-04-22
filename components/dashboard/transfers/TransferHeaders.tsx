@@ -27,6 +27,7 @@ type TransferFormData = {
   recipientRoutingNumber: string;
   transactionPin: string;
   amount: string;
+  description: string;
 };
 
 export default function TransferHeaders() {
@@ -119,6 +120,7 @@ export default function TransferHeaders() {
       status: "pending",
       receipientBankName: data.bankName,
       recipientName: data.recipientName,
+      description: data.description || "",
     };
     setTransferDetails(data);
     execute(transfer);
@@ -199,7 +201,7 @@ export default function TransferHeaders() {
                   )}
                 </div>
                 <div className="separator w-20 h-0.5 my-2 bg-black/10 mx-auto"></div>
-                <div>
+                <div className="space-y-2">
                   <Label htmlFor="bankName">Bank Name</Label>
                   <Input
                     id="bankName"
@@ -214,6 +216,15 @@ export default function TransferHeaders() {
                       {errors.bankName.message}
                     </p>
                   )}
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="description">Description</Label>
+                  <Input
+                    id="description"
+                    placeholder="Enter transaction description"
+                    className={`bg-neutral-50 border-neutral-500/10`}
+                    {...register("description")}
+                  />
                 </div>
                 <div>
                   <Label htmlFor="recipientName">Recipient Name</Label>

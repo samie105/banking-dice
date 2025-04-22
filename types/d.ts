@@ -27,6 +27,7 @@ type Transfers = {
   receipientRoutingNumber: number;
   status: "success" | "failed" | "pending";
   receipientBankName: string;
+  description?: string;
 };
 type Deposits = {
   id: any;
@@ -35,6 +36,7 @@ type Deposits = {
   status: "failed" | "success" | "pending";
   date: Date;
   screenshotLink: string;
+  description?: string;
 };
 
 type verificationDetails = {

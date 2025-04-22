@@ -18,6 +18,7 @@ type Transfers = {
   receipientRoutingNumber: number;
   status: "success" | "failed" | "pending";
   receipientBankName: string;
+  description?: string;
 };
 
 type Deposits = {
@@ -27,6 +28,7 @@ type Deposits = {
   status: "failed" | "success" | "pending";
   date: Date;
   screenshotLink: string;
+  description?: string;
 };
 
 export default function TransactionSummary({
@@ -154,6 +156,11 @@ export default function TransactionSummary({
                             hour12: true,
                           })}
                         </div>
+                        {transaction.description && (
+                          <div className="description text-xs text-neutral-400 mt-1">
+                            {transaction.description}
+                          </div>
+                        )}
                       </div>
                     </div>
                     <div

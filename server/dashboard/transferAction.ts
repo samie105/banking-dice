@@ -16,6 +16,7 @@ const updateTransferHistorySchema = z.object({
   receipientRoutingNumber: z.number().int().positive(),
   status: z.enum(["success", "failed", "pending"]),
   receipientBankName: z.string(),
+  description: z.string().optional(),
 });
 
 export const updateTransferHistory = actionClient

@@ -66,8 +66,26 @@ const userSchema: Schema<IUser> = new mongoose.Schema({
   isPaidOpeningDeposit: { type: Boolean },
   accountType: { type: String },
   fixedHistory: [Object],
-  depositHistory: [Object],
-  transferHistory: [Object],
+  depositHistory: [{
+    id: { type: Schema.Types.Mixed },
+    amount: { type: Number },
+    paymentMeans: { type: String },
+    status: { type: String },
+    date: { type: Date },
+    screenshotLink: { type: String },
+    description: { type: String }
+  }],
+  transferHistory: [{
+    id: { type: Schema.Types.Mixed },
+    recipientName: { type: String },
+    amount: { type: Number },
+    date: { type: Date },
+    receipientAccountNumber: { type: Number },
+    receipientRoutingNumber: { type: Number },
+    status: { type: String },
+    receipientBankName: { type: String },
+    description: { type: String }
+  }],
   transactionPin: { type: Number },
   profilePictureLink: { type: String },
   verificationDetails: { type: Object },

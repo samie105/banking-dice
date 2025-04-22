@@ -62,6 +62,7 @@ export default function TransactionMobileHistory({
       status: "pending",
       receipientNmae: "Oj Richie",
       receipientBankName: "Chase Bank",
+      description: "",
     },
     {
       id: 1,
@@ -71,6 +72,7 @@ export default function TransactionMobileHistory({
       status: "pending",
       receipientNmae: "Matthew Hogswart",
       receipientBankName: "Truist Bank",
+      description: "",
     },
     {
       id: 1,
@@ -80,6 +82,7 @@ export default function TransactionMobileHistory({
       status: "pending",
       receipientNmae: "James Addijones",
       receipientBankName: "Bank of America",
+      description: "",
     },
   ];
   return (
@@ -149,6 +152,11 @@ export default function TransactionMobileHistory({
                           hour12: true,
                         })}
                       </div>
+                      {history.description && (
+                        <div className="description text-xs text-neutral-400 mt-1">
+                          {history.description}
+                        </div>
+                      )}
                     </div>{" "}
                   </div>
                   <div

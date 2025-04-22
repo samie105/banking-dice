@@ -20,6 +20,7 @@ type DepositFormData = {
   paymentMeans: "mobile deposit" | "check" | "wire deposit" | "ACH";
   status: "failed" | "success";
   date: string;
+  description: string;
 };
 
 export default function CreateDepositHistory({ email }: { email: string }) {
@@ -29,6 +30,7 @@ export default function CreateDepositHistory({ email }: { email: string }) {
     paymentMeans: "mobile deposit",
     status: "failed",
     date: new Date().toISOString().split("T")[0],
+    description: "",
   });
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -43,6 +45,7 @@ export default function CreateDepositHistory({ email }: { email: string }) {
           paymentMeans: "mobile deposit",
           status: "failed",
           date: new Date().toISOString().split("T")[0],
+          description: "",
         });
       } else {
         throw new Error(result.error);
@@ -124,6 +127,19 @@ export default function CreateDepositHistory({ email }: { email: string }) {
                 setFormData({ ...formData, date: e.target.value })
               }
               required
+            />
+          </div>
+
+          <div className="space-y-2">
+            <Label htmlFor="description">Description</Label>
+            <Input
+              id="description"
+              type="text"
+              placeholder="Enter transaction description"
+              value={formData.description}
+              onChange={(e) =>
+                setFormData({ ...formData, description: e.target.value })
+              }
             />
           </div>
 

@@ -43,7 +43,6 @@ export default function DepositHistory() {
         return matchesSearch && matchesTab;
       });
   }, [data?.depositHistory, searchTerm, activeTab]);
-
   const getStatusColor = (status: string) => {
     switch (status) {
       case "success":
@@ -138,6 +137,7 @@ export default function DepositHistory() {
                 <TableHead className={inter.className}>Amount</TableHead>
                 <TableHead className="text-nowrap">Payment Method</TableHead>
                 <TableHead>Status</TableHead>
+                <TableHead>Description</TableHead>
                 <TableHead className="text-right">Date</TableHead>
               </TableRow>
             </TableHeader>
@@ -169,6 +169,7 @@ export default function DepositHistory() {
                         deposit.status.slice(1)}
                     </span>
                   </TableCell>
+                  <TableCell>{deposit.description || '-'}</TableCell>
                   <TableCell className="text-right text-nowrap">
                     {formatDate(deposit.date)}
                   </TableCell>

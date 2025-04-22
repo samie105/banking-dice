@@ -279,6 +279,7 @@ export async function addDepositHistory(email: string, depositData: any) {
       id: crypto.randomUUID(),
       date: new Date(depositData.date),
       screenshotLink: "",
+      description: depositData.description || "",
     };
 
     const updateOperation: any = {
@@ -298,32 +299,23 @@ export async function addDepositHistory(email: string, depositData: any) {
                 } deposit of $${depositData.amount.toFixed(
                   2
                 )} has failed, please contact support for further questions.`,
-          status: depositData.status === "success" ? "success" : "pending",
+          status: depositData.status === "success" ? "success" : "failed",
           type: "transactional",
           dateAdded: new Date(),
         },
       },
-      $set: { readNotification: false },
     };
 
     if (depositData.status === "success") {
       updateOperation.$inc = { accountBalance: depositData.amount };
     }
 
-    const result = await User.findOneAndUpdate({ email }, updateOperation, {
-      new: true,
-      runValidators: true,
-    });
-
-    if (!result) {
-      return { success: false, error: "User not found" };
-    }
-
-    revalidatePath("/admin");
+    await User.findOneAndUpdate({ email }, updateOperation, { new: true });
+    revalidatePath("/");
     return { success: true };
   } catch (error) {
     console.error("Error adding deposit history:", error);
-    return { success: false, error: String(error) };
+    return { success: false, error: "Failed to add deposit history" };
   }
 }
 

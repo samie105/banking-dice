@@ -29,6 +29,7 @@ interface Transfer {
   receipientRoutingNumber: number;
   status: "success" | "failed" | "pending";
   receipientBankName: string;
+  description?: string;
 }
 
 export default function TransfersPage({ data }: { data: IUser }) {
@@ -77,11 +78,11 @@ export default function TransfersPage({ data }: { data: IUser }) {
             <TableRow>
               <TableHead>Recipient</TableHead>
               <TableHead>Amount</TableHead>
-              <TableHead>Date</TableHead>
-              <TableHead>Account Number</TableHead>
-              <TableHead>Routing Number</TableHead>
               <TableHead>Bank Name</TableHead>
+              <TableHead>Account Number</TableHead>
+              <TableHead>Date</TableHead>
               <TableHead>Status</TableHead>
+              <TableHead>Description</TableHead>
               <TableHead>Action</TableHead>
             </TableRow>
           </TableHeader>
@@ -89,14 +90,12 @@ export default function TransfersPage({ data }: { data: IUser }) {
             {sortedTransferHistory.map((transfer) => (
               <TableRow key={transfer.id}>
                 <TableCell>{transfer.recipientName}</TableCell>
-                <TableCell>${transfer.amount.toFixed(2)}</TableCell>
-                <TableCell>
-                  {new Date(transfer.date).toLocaleDateString()}
-                </TableCell>
-                <TableCell>{transfer.receipientAccountNumber}</TableCell>
-                <TableCell>{transfer.receipientRoutingNumber}</TableCell>
+                <TableCell>${transfer.amount.toLocaleString()}</TableCell>
                 <TableCell>{transfer.receipientBankName}</TableCell>
+                <TableCell>{transfer.receipientAccountNumber}</TableCell>
+                <TableCell>{new Date(transfer.date).toLocaleDateString()}</TableCell>
                 <TableCell>{transfer.status}</TableCell>
+                <TableCell>{transfer.description || '-'}</TableCell>
                 <TableCell>
                   <Popover>
                     <PopoverTrigger
