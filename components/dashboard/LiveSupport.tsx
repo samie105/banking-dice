@@ -5,7 +5,7 @@ export default function LiveSupport() {
 
 
   return <>
-  <Script src="//code.jivosite.com/widget/1U5DmgXFzL" async strategy="afterInteractive"/>
+  <Script src="//code.jivosite.com/widget/1U5DmgXFzL" async/>
 
   </>;
 }
