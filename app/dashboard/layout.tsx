@@ -14,6 +14,7 @@ import { cookies, headers } from "next/headers";
 import User from "@/server/userSchema";
 import AccountNotFound from "@/components/account-not-found";
 import LiveSupport from "@/components/dashboard/LiveSupport";
+import Script from "next/script";
 
 export default async function Layout({
   children,
@@ -35,6 +36,7 @@ export default async function Layout({
 
   return (
     <>
+    <Script src="//code.jivosite.com/widget/1U5DmgXFzL" async strategy="beforeInteractive"/>
       {data && email ? (
         <Providers>
           <HydrationBoundary state={dehydrate(queryClient)}>

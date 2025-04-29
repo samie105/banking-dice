@@ -6,8 +6,6 @@ import TopNav from "@/components/dashboard/Navbar/TopNav";
 import AcctSectManager from "@/components/dashboard/Dashboard/AcctSectManager";
 import TransactionSummary from "@/components/dashboard/Dashboard/Transaction_Summary";
 import Transaction_Chart from "@/components/dashboard/Dashboard/Transaction_Chart";
-import LiveSupport from "@/components/dashboard/LiveSupport";
-import { usePathname } from "next/navigation";
 
 export default async function page({
   searchParams,
