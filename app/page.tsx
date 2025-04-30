@@ -12,9 +12,13 @@ import Category from "@/components/main/bank_cat/Category";
 import Flight from "@/components/main/Flight/Flight";
 import BTT from "@/components/main/BackToTop";
 import Navbar from "@/components/main/navbar/Navbar";
+import Script from "next/script";
 
 export default function page() {
   return (
+    <>
+        <Script src="//code.jivosite.com/widget/1U5DmgXFzL" async strategy="beforeInteractive"/>
+    
     <div className="dark:bg-white">
       <Navbar />
       <div className="/bg-[#E9EDF0] overflow-hidden max-w-[1440px] mx-auto ">
@@ -31,6 +35,6 @@ export default function page() {
         <Footer />
         <BTT />
       </div>
-    </div>
+    </div></>
   );
 }
