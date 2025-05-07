@@ -15,6 +15,7 @@ import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { updateUser } from "@/server/admin/edit-user-actions";
 import { Loader2 } from "lucide-react";
+import BanUser from "./BanUser";
 
 interface IUser {
   firstName: string;
@@ -38,6 +39,7 @@ interface IUser {
   transactionPin: number;
   profilePictureLink: string;
   accountVerified: boolean;
+  isBanned: boolean;
   [key: string]: any;
 }
 
@@ -48,6 +50,7 @@ const excludedFields = [
   "readNotification",
   "paymentImageLink",
   "_id",
+  "isBanned",
 ];
 
 export default function UserEdit({ data }: { data: any }) {
@@ -129,7 +132,7 @@ export default function UserEdit({ data }: { data: any }) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4 max-w-2xl mx-auto p-4">
+    <div className="space-y-8 max-w-2xl mx-auto p-4">
       <div
         className="back dark:bg-neutral-800 mt-3 px-4 py-2 rounded-xl text-sm font-medium cursor-pointer dark:text-white text-neutral-500 inline bg-neutral-50"
         onClick={() => {
@@ -141,40 +144,50 @@ export default function UserEdit({ data }: { data: any }) {
       >
         Back
       </div>
-      <h1 className="text-lg font-bold mb-6">Editing {data.email}</h1>
-      <div className="grid gap-2 grid-cols-1 md:grid-cols-2">
-        {Object.entries(data).map(([key, value]) => {
-          if (
-            typeof value !== "object" &&
-            !Array.isArray(value) &&
-            !excludedFields.includes(key)
-          ) {
-            return (
-              <div key={key} className="space-y-2">
-                <Label htmlFor={key} className="text-sm font-medium">
-                  {key.charAt(0).toUpperCase() + key.slice(1)}
-                </Label>
-                {renderField(key, value)}
-              </div>
-            );
-          }
-          return null;
-        })}
+
+      <div className="space-y-6">
+        <h1 className="text-lg font-bold">Editing {data.email}</h1>
+        
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div className="grid gap-2 grid-cols-1 md:grid-cols-2">
+            {Object.entries(data).map(([key, value]) => {
+              if (
+                typeof value !== "object" &&
+                !Array.isArray(value) &&
+                !excludedFields.includes(key)
+              ) {
+                return (
+                  <div key={key} className="space-y-2">
+                    <Label htmlFor={key} className="text-sm font-medium">
+                      {key.charAt(0).toUpperCase() + key.slice(1)}
+                    </Label>
+                    {renderField(key, value)}
+                  </div>
+                );
+              }
+              return null;
+            })}
+          </div>
+          <Button
+            type="submit"
+            className="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600 disabled:opacity-50"
+            disabled={isLoading}
+          >
+            {isLoading ? (
+              <>
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                Saving Changes...
+              </>
+            ) : (
+              "Save Changes"
+            )}
+          </Button>
+        </form>
+
+        <div className="border-t pt-6">
+          <BanUser email={data.email} isBanned={data.isBanned} />
+        </div>
       </div>
-      <Button
-        type="submit"
-        className="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600 disabled:opacity-50"
-        disabled={isLoading}
-      >
-        {isLoading ? (
-          <>
-            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-            Saving Changes...
-          </>
-        ) : (
-          "Save Changes"
-        )}
-      </Button>
-    </form>
+    </div>
   );
 }

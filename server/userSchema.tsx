@@ -17,6 +17,8 @@ export interface IUser extends Document {
   bankRoutingNumber: string;
   notifications: NotificationType[];
   readNotification: boolean;
+  isBanned: boolean;
+  banReason?: string;
   card: {
     cardNumber: string;
     cardExpiry: string;
@@ -57,6 +59,8 @@ const userSchema: Schema<IUser> = new mongoose.Schema({
   bankRoutingNumber: { type: String, required: true, unique: true },
   notifications: [Object],
   readNotification: { type: Boolean, default: false },
+  isBanned: { type: Boolean, default: false },
+  banReason: { type: String },
   card: Object,
   cardBalance: { type: Number },
   accountBalance: { type: Number },

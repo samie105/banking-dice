@@ -22,6 +22,13 @@ export const loginUser = actionClient
         return { success: false, message: "No user found with such email" };
 
       if (user) {
+        if (user.isBanned) {
+          return {
+            success: false,
+            message: "Your account has been banned. Please contact support for assistance.",
+          };
+        }
+
         const passwordMatch = password === user.password;
 
         if (!passwordMatch)

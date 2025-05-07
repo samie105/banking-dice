@@ -336,3 +336,40 @@ export async function deleteUser(email: string) {
     return { success: false, error: String(error) };
   }
 }
+
+export async function toggleUserBan(email: string, isBanned: boolean, banReason?: string) {
+  try {
+    await dbConnect();
+
+    const user = await User.findOne({ email });
+    if (!user) {
+      return { success: false, error: "User not found" };
+    }
+
+    const update = {
+      $set: {
+        isBanned,
+        ...(banReason && { banReason }),
+        readNotification: false,
+      },
+      $push: {
+        notifications: {
+          id: new Date().getTime(),
+          message: isBanned
+            ? `Your account has been banned${banReason ? `: ${banReason}` : ''}.`
+            : "Your account has been unbanned.",
+          status: isBanned ? "failed" : "success",
+          type: "neutral",
+          dateAdded: new Date(),
+        },
+      },
+    };
+
+    await User.findOneAndUpdate({ email }, update, { new: true });
+    revalidatePath("/");
+    return { success: true };
+  } catch (error) {
+    console.error("Error toggling user ban:", error);
+    return { success: false, error: "Failed to toggle user ban" };
+  }
+}
